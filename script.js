@@ -1,28 +1,28 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
 var possibleCharacters = "";
 var numbers = "0123456789";
 var lower = "abcdefghijklmnopqrstuvwxyz";
 var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var special = "~`!@#$%^&*()-_=+{}[]|/?.<>,";
-var password = "";
+var finalPass = "";
 
+var generateBtn = document.querySelector("#generate");
 // for (var i = 0; i < passwordLength; i++) {
 //     var possibleCharacters = getRandom(possibleCharacters);
 
 //     password += possibleCharacters;
 // }
 
-// Write password to the #password input
-// function generatePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
+//Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-//   passwordText.value = password;
-// }
+  passwordText.value = password;
+}
+generateBtn.addEventListener("click", writePassword);
+//Add event listener to generate button
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword());
 function generatePassword() {
   var passwordLength = prompt(
     "How many characters would you like your password to have? The minimum number of characters is 8, and the maximum is 128."
@@ -65,12 +65,13 @@ function generatePassword() {
   for (var i = 0; i < passwordLength; i++) {
     var randomIndex = Math.floor(Math.random() * possibleCharacters.length);
     var randomElement = possibleCharacters[randomIndex];
-    password = password += randomElement;
-    console.log(password);
+    finalPass = finalPass + randomElement;
   }
-  return password;
+  console.log(finalPass);
+  return finalPass;
 }
-getRandom();
+
+// getRandom();
 
 // function getRandom(array) {
 //   var randomIndex = Math.floor(Math.random() * array.length);
